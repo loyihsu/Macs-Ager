@@ -10,113 +10,134 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    
+    //MARK: - Initialize
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    
+    // Tags
+    let name = "Macs Countdown"
+    let expectedDays = Double(expect)
 
-
-
+    // Flags
+    var titleAppear = timeAppearDefaults
+    var targetDay: Date?
+    
+    // Some other configurable parts (tags) are in the `configuration.swift` file
+    
+    // MARK: - Dafaults
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
+        statusItem.title = ""
+        
+        // Setup the status bar image
+        if let button = statusItem.button {
+            let statusbarImage = NSImage(named: NSImage.Name("StatusBarButtonImage"))
+            button.image = statusbarImage
+        }
+        
+        // Create date from components
+        let dateComponents = DateComponents.init(
+            calendar: nil, timeZone: TimeZone.init(abbreviation: "GMT\(timezoneGMT)"), era: nil,
+            year: dsgntDay[0], month: dsgntDay[1], day: dsgntDay[2], hour: dsgntDay[3], minute: dsgntDay[4], second: dsgntDay[5],
+            nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil,
+            weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil
+        )
+        targetDay = Calendar.current.date(from: dateComponents)
+        
+        constructMenu()
+        
+        // Setup a timer to keep it updated
+        _ = Timer.scheduledTimer(
+            timeInterval: 0.5, target: self, selector: #selector(self.update),
+            userInfo: nil, repeats: true
+        )
     }
-
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
-    // MARK: - Core Data stack
-
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-        */
-        let container = NSPersistentContainer(name: "Macs_Countdown")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error)")
-            }
-        })
-        return container
-    }()
-
-    // MARK: - Core Data Saving and Undo support
-
-    @IBAction func saveAction(_ sender: AnyObject?) {
-        // Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
-        let context = persistentContainer.viewContext
-
-        if !context.commitEditing() {
-            NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing before saving")
-        }
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Customize this code block to include application-specific recovery steps.
-                let nserror = error as NSError
-                NSApplication.shared.presentError(nserror)
-            }
+    
+    //MARK: - Main functions
+    
+    /// Construct the menu bar on click menu
+    func constructMenu() {
+        var menu = NSMenu()
+        
+        let quitItem = menuItemSetup("Quit \(name)", #selector(NSApplication.terminate(_:)), "", nil)
+        let years    = menuItemSetup(deviceName, nil, "", 50)
+        let equi     = menuItemSetup("It equals...", nil, "", 60)
+        let dop      = menuItemSetup("Date of Purchase: \(dateFormatterForDSGNT())", nil, "", nil);
+        let hid      = menuItemSetup("Hide Count Number", #selector(self.hideDays), "", 10)
+        
+        addSeveralMenuItemToMenu(&menu, [quitItem, .separator(), years, equi, .separator(), dop, .separator(), hid])
+        
+        self.statusItem.menu = menu
+    }
+    
+    /// Switch the hide days option on and off
+    @objc func hideDays() {
+        titleAppear = (statusItem.menu?.item(withTag: 10)?.state == .on) ? true : false
+        statusItem.menu?.item(withTag: 10)?.state = (titleAppear == true) ? .off : .on
+    }
+    
+    /// Update on each cycle
+    @objc func update() {
+        let time = ((targetDay?.timeIntervalSinceNow)!/86400).abs()
+        
+        statusItem.title = (titleAppear == true) ? " \(String(Int(time)))" : ""
+        
+        let percentage = (Double(Int(time))/expectedDays) * 100
+        
+        var leftdays = time
+        
+        let year:  Int = Int(leftdays / 365.25)
+        leftdays       = Double(Int(leftdays) - Int(Double(year) * 365.25))
+        let month: Int = Int(leftdays/30.44)
+        leftdays       = Double(Int(leftdays) - Int(Double(month) * 30.44))
+        
+        let year_str  = (year == 1)     ? "1 year "  : (year >= 2)     ? "\(year) years "         : ""
+        let month_str = (month == 1)    ? "1 month " : (month >= 2)    ? "\(month) months "       : ""
+        var day_str   = (leftdays == 1) ? "1 day"    : (leftdays >= 2) ? "\(Int(leftdays)) days"  : "brand new!"
+        if !(month_str == "" && year_str == "") { day_str = "and \(day_str)" }
+        
+        setItemTitleAt(tag: 50, title: "\(deviceName): \(String(Int(time))) (\(percentage.format(f: ".2"))%)")
+        setItemTitleAt(tag: 60, title: "It's \(year_str)\(month_str)\(day_str)")
+    }
+    
+    // MARK: - Make Life Easier
+    
+    func dateFormatterForDSGNT() -> String {
+        let year   = "\(dsgntDay[0])"
+        let month  = (dsgntDay[1] < 10) ? "0\(dsgntDay[1])" : "\(dsgntDay[1])"
+        let day    = (dsgntDay[2] < 10) ? "0\(dsgntDay[2])" : "\(dsgntDay[2])"
+        return "\(year)-\(month)-\(day)"
+    }
+    
+    func setItemTitleAt(tag: Int, title: String) {
+        statusItem.menu?.item(withTag: tag)?.title = title
+    }
+    
+    func addSeveralMenuItemToMenu(_ myMenu: inout NSMenu, _ items: [NSMenuItem]) {
+        for i in items {
+            myMenu.addItem(i)
         }
     }
-
-    func windowWillReturnUndoManager(window: NSWindow) -> UndoManager? {
-        // Returns the NSUndoManager for the application. In this case, the manager returned is that of the managed object context for the application.
-        return persistentContainer.viewContext.undoManager
+    
+    func menuItemSetup(_ title: String, _ action: Selector?, _ keyeq: String, _ tag: Int?) -> NSMenuItem {
+        let output = NSMenuItem.init(title: title, action: action, keyEquivalent: keyeq)
+        if let t = tag { output.tag = t }
+        return output
     }
-
-    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
-        // Save changes in the application's managed object context before the application terminates.
-        let context = persistentContainer.viewContext
-        
-        if !context.commitEditing() {
-            NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing to terminate")
-            return .terminateCancel
-        }
-        
-        if !context.hasChanges {
-            return .terminateNow
-        }
-        
-        do {
-            try context.save()
-        } catch {
-            let nserror = error as NSError
-
-            // Customize this code block to include application-specific recovery steps.
-            let result = sender.presentError(nserror)
-            if (result) {
-                return .terminateCancel
-            }
-            
-            let question = NSLocalizedString("Could not save changes while quitting. Quit anyway?", comment: "Quit without saves error question message")
-            let info = NSLocalizedString("Quitting now will lose any changes you have made since the last successful save", comment: "Quit without saves error question info");
-            let quitButton = NSLocalizedString("Quit anyway", comment: "Quit anyway button title")
-            let cancelButton = NSLocalizedString("Cancel", comment: "Cancel button title")
-            let alert = NSAlert()
-            alert.messageText = question
-            alert.informativeText = info
-            alert.addButton(withTitle: quitButton)
-            alert.addButton(withTitle: cancelButton)
-            
-            let answer = alert.runModal()
-            if answer == .alertSecondButtonReturn {
-                return .terminateCancel
-            }
-        }
-        // If we got here, it is time to quit.
-        return .terminateNow
-    }
-
 }
 
+extension Double {
+    func format(f: String) -> String {
+        return String(format: "%\(f)f", self)
+    }
+    
+    func abs() -> Double {
+        return (self < 0) ? self * -1 : self
+    }
+}

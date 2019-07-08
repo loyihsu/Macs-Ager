@@ -11,16 +11,18 @@
 		FFB1EEAB22D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EEA922D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld */; };
 		FFB1EEAD22D39F5000A00E0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB1EEAC22D39F5000A00E0F /* Assets.xcassets */; };
 		FFB1EEB022D39F5000A00E0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB1EEAE22D39F5000A00E0F /* Main.storyboard */; };
+		FFB1EEB922D3A7C600A00E0F /* configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EEB822D3A7C600A00E0F /* configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FFB1EEA422D39F4F00A00E0F /* Macs-Countdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Macs-Countdown.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFB1EEA422D39F4F00A00E0F /* Macs Countdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Macs Countdown.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB1EEA722D39F4F00A00E0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFB1EEAA22D39F4F00A00E0F /* Macs_Countdown.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Macs_Countdown.xcdatamodel; sourceTree = "<group>"; };
 		FFB1EEAC22D39F5000A00E0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFB1EEAF22D39F5000A00E0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFB1EEB122D39F5000A00E0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFB1EEB222D39F5000A00E0F /* Macs_Countdown.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macs_Countdown.entitlements; sourceTree = "<group>"; };
+		FFB1EEB822D3A7C600A00E0F /* configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +47,7 @@
 		FFB1EEA522D39F4F00A00E0F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FFB1EEA422D39F4F00A00E0F /* Macs-Countdown.app */,
+				FFB1EEA422D39F4F00A00E0F /* Macs Countdown.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,6 +61,7 @@
 				FFB1EEB122D39F5000A00E0F /* Info.plist */,
 				FFB1EEB222D39F5000A00E0F /* Macs_Countdown.entitlements */,
 				FFB1EEA922D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld */,
+				FFB1EEB822D3A7C600A00E0F /* configuration.swift */,
 			);
 			path = "Macs-Countdown";
 			sourceTree = "<group>";
@@ -66,9 +69,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FFB1EEA322D39F4F00A00E0F /* Macs-Countdown */ = {
+		FFB1EEA322D39F4F00A00E0F /* Macs Countdown */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FFB1EEB522D39F5000A00E0F /* Build configuration list for PBXNativeTarget "Macs-Countdown" */;
+			buildConfigurationList = FFB1EEB522D39F5000A00E0F /* Build configuration list for PBXNativeTarget "Macs Countdown" */;
 			buildPhases = (
 				FFB1EEA022D39F4F00A00E0F /* Sources */,
 				FFB1EEA122D39F4F00A00E0F /* Frameworks */,
@@ -78,9 +81,9 @@
 			);
 			dependencies = (
 			);
-			name = "Macs-Countdown";
+			name = "Macs Countdown";
 			productName = "Macs-Countdown";
-			productReference = FFB1EEA422D39F4F00A00E0F /* Macs-Countdown.app */;
+			productReference = FFB1EEA422D39F4F00A00E0F /* Macs Countdown.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -98,7 +101,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FFB1EE9F22D39F4F00A00E0F /* Build configuration list for PBXProject "Macs-Countdown" */;
+			buildConfigurationList = FFB1EE9F22D39F4F00A00E0F /* Build configuration list for PBXProject "Macs Countdown" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -111,7 +114,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FFB1EEA322D39F4F00A00E0F /* Macs-Countdown */,
+				FFB1EEA322D39F4F00A00E0F /* Macs Countdown */,
 			);
 		};
 /* End PBXProject section */
@@ -134,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFB1EEA822D39F4F00A00E0F /* AppDelegate.swift in Sources */,
+				FFB1EEB922D3A7C600A00E0F /* configuration.swift in Sources */,
 				FFB1EEAB22D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +283,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "LW.Macs-Countdown";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -299,6 +304,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "LW.Macs-Countdown";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -308,7 +314,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FFB1EE9F22D39F4F00A00E0F /* Build configuration list for PBXProject "Macs-Countdown" */ = {
+		FFB1EE9F22D39F4F00A00E0F /* Build configuration list for PBXProject "Macs Countdown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FFB1EEB322D39F5000A00E0F /* Debug */,
@@ -317,7 +323,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FFB1EEB522D39F5000A00E0F /* Build configuration list for PBXNativeTarget "Macs-Countdown" */ = {
+		FFB1EEB522D39F5000A00E0F /* Build configuration list for PBXNativeTarget "Macs Countdown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FFB1EEB622D39F5000A00E0F /* Debug */,
