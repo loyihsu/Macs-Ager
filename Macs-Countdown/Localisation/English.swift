@@ -17,7 +17,7 @@ let noNumEn         = "Hide Count Number"
 let oneYearEn       = "1 year "
 let severalYearsEn  = " years "
 let oneMonthEn      = "1 month "
-let severalMonthsEn = " month "
+let severalMonthsEn = " months "
 let oneDayEn        = "1 day"
 let severalDaysEn   = " days"
 

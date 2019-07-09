@@ -8,8 +8,6 @@
 
 import Foundation
 
-let currentLanguage = "English"
-
 let name = "Macs Countdown"
 
 let languageIndex     = [IndexEn, IndexZHTW]

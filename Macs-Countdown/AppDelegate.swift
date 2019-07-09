@@ -72,7 +72,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let dop      = menuItemSetup(dopLOCA[languagePos], nil, "", nil);
         let hid      = menuItemSetup(noNumLOCA[languagePos], #selector(self.hideDays), "", 10)
         
-        addSeveralMenuItemToMenu(&menu, [quitItem, .separator(), years, equi, .separator(), dop, .separator(), hid])
+        let appName  = menuItemSetup("\(name) by Loyiworks", nil, "", nil)
+        let vers     = menuItemSetup("\(versions())", nil, "", nil)
+        
+        addSeveralMenuItemToMenu(&menu, [quitItem, .separator(),
+                                         appName, vers, .separator(),
+                                         years, equi, .separator(),
+                                         dop, .separator(),
+                                         hid])
         
         self.statusItem.menu = menu
     }
@@ -141,4 +148,12 @@ func dateFormatterForDSGNT() -> String {
     let month  = (dsgntDay[1] < 10) ? "0\(dsgntDay[1])" : "\(dsgntDay[1])"
     let day    = (dsgntDay[2] < 10) ? "0\(dsgntDay[2])" : "\(dsgntDay[2])"
     return "\(year)-\(month)-\(day)"
+}
+
+func versions() -> String {
+    let dictionary = Bundle.main.infoDictionary!
+    let version = dictionary["CFBundleShortVersionString"] as! String
+    let build = dictionary["CFBundleVersion"] as! String
+    
+    return "Ver. \(version).\(build)"
 }

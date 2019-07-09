@@ -13,3 +13,5 @@ let timezoneGMT        = "<#YOUR GMT TIME ZONE, LIKE +8#>"                // You
 let deviceName         = "<#HOW DO WE CALL YOUR DEVICE#>"      // Preferred name of your device
 let timeAppearDefaults = true                       // Whether to show days in menu bar
 let expect             = 365 * 4                    // Expected device life in days
+
+let currentLanguage = "English"                     // Available language: English, 中文
