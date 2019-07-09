@@ -15,9 +15,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     // Tags
-    let name = "Macs Countdown"
     let expectedDays = Double(expect)
-
+    var languagePos  = languageIndex.firstIndex(of: currentLanguage)!
+    
     // Flags
     var titleAppear = timeAppearDefaults
     var targetDay: Date?
@@ -65,11 +65,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func constructMenu() {
         var menu = NSMenu()
         
-        let quitItem = menuItemSetup("Quit \(name)", #selector(NSApplication.terminate(_:)), "", nil)
+        let quitItem = menuItemSetup(quitLOCA[languagePos], #selector(NSApplication.terminate(_:)), "", nil)
         let years    = menuItemSetup(deviceName, nil, "", 50)
-        let equi     = menuItemSetup("It equals...", nil, "", 60)
-        let dop      = menuItemSetup("Date of Purchase: \(dateFormatterForDSGNT())", nil, "", nil);
-        let hid      = menuItemSetup("Hide Count Number", #selector(self.hideDays), "", 10)
+        let equi     = menuItemSetup(itEqLOCA[languagePos], nil, "", 60)
+        let dop      = menuItemSetup(dopLOCA[languagePos], nil, "", nil);
+        let hid      = menuItemSetup(noNumLOCA[languagePos], #selector(self.hideDays), "", 10)
         
         addSeveralMenuItemToMenu(&menu, [quitItem, .separator(), years, equi, .separator(), dop, .separator(), hid])
         
@@ -97,23 +97,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let month: Int = Int(leftdays/30.44)
         leftdays       = Double(Int(leftdays) - Int(Double(month) * 30.44))
         
-        let year_str  = (year == 1)     ? "1 year "  : (year >= 2)     ? "\(year) years "         : ""
-        let month_str = (month == 1)    ? "1 month " : (month >= 2)    ? "\(month) months "       : ""
-        var day_str   = (leftdays == 1) ? "1 day"    : (leftdays >= 2) ? "\(Int(leftdays)) days"  : "brand new!"
-        if !(month_str == "" && year_str == "") { day_str = "and \(day_str)" }
+        let year_str  = (year == 1)     ? oneYearLOCA[languagePos]  : (year >= 2)     ? "\(year)\(severalYearsLOCA[languagePos])"         : ""
+        let month_str = (month == 1)    ? oneMonthLOCA[languagePos] : (month >= 2)    ? "\(month)\(severalMonthsLOCA[languagePos])"       : ""
+        var day_str   = (leftdays == 1) ? oneDayLOCA[languagePos]    : (leftdays >= 2) ? "\(Int(leftdays))\(severalDaysLOCA[languagePos])"  : brandNewLOCA[languagePos]
+        if !(month_str == "" && year_str == "") { day_str = "\(andLOCA[languagePos])\(day_str)" }
         
         setItemTitleAt(tag: 50, title: "\(deviceName): \(String(Int(time))) (\(percentage.format(f: ".2"))%)")
-        setItemTitleAt(tag: 60, title: "It's \(year_str)\(month_str)\(day_str)")
+        setItemTitleAt(tag: 60, title: "\(itsLOCA[languagePos])\(year_str)\(month_str)\(day_str)")
     }
     
     // MARK: - Make Life Easier
-    
-    func dateFormatterForDSGNT() -> String {
-        let year   = "\(dsgntDay[0])"
-        let month  = (dsgntDay[1] < 10) ? "0\(dsgntDay[1])" : "\(dsgntDay[1])"
-        let day    = (dsgntDay[2] < 10) ? "0\(dsgntDay[2])" : "\(dsgntDay[2])"
-        return "\(year)-\(month)-\(day)"
-    }
     
     func setItemTitleAt(tag: Int, title: String) {
         statusItem.menu?.item(withTag: tag)?.title = title
@@ -140,4 +133,11 @@ extension Double {
     func abs() -> Double {
         return (self < 0) ? self * -1 : self
     }
+}
+
+func dateFormatterForDSGNT() -> String {
+    let year   = "\(dsgntDay[0])"
+    let month  = (dsgntDay[1] < 10) ? "0\(dsgntDay[1])" : "\(dsgntDay[1])"
+    let day    = (dsgntDay[2] < 10) ? "0\(dsgntDay[2])" : "\(dsgntDay[2])"
+    return "\(year)-\(month)-\(day)"
 }

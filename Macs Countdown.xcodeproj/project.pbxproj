@@ -12,6 +12,9 @@
 		FFB1EEAD22D39F5000A00E0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB1EEAC22D39F5000A00E0F /* Assets.xcassets */; };
 		FFB1EEB022D39F5000A00E0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB1EEAE22D39F5000A00E0F /* Main.storyboard */; };
 		FFB1EEB922D3A7C600A00E0F /* configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EEB822D3A7C600A00E0F /* configuration.swift */; };
+		FFCAB7E222D4461600BBE43D /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCAB7E122D4461600BBE43D /* strings.swift */; };
+		FFCAB7E422D44A9400BBE43D /* English.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCAB7E322D44A9400BBE43D /* English.swift */; };
+		FFCAB7E622D44B9D00BBE43D /* ZH-TW.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCAB7E522D44B9D00BBE43D /* ZH-TW.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		FFB1EEB122D39F5000A00E0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFB1EEB222D39F5000A00E0F /* Macs_Countdown.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macs_Countdown.entitlements; sourceTree = "<group>"; };
 		FFB1EEB822D3A7C600A00E0F /* configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = configuration.swift; sourceTree = "<group>"; };
+		FFCAB7E122D4461600BBE43D /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
+		FFCAB7E322D44A9400BBE43D /* English.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = English.swift; sourceTree = "<group>"; };
+		FFCAB7E522D44B9D00BBE43D /* ZH-TW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ZH-TW.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,7 @@
 		FFB1EEA622D39F4F00A00E0F /* Macs-Countdown */ = {
 			isa = PBXGroup;
 			children = (
+				FFCAB7E022D445FF00BBE43D /* Localisation */,
 				FFB1EEA722D39F4F00A00E0F /* AppDelegate.swift */,
 				FFB1EEAC22D39F5000A00E0F /* Assets.xcassets */,
 				FFB1EEAE22D39F5000A00E0F /* Main.storyboard */,
@@ -64,6 +71,16 @@
 				FFB1EEB822D3A7C600A00E0F /* configuration.swift */,
 			);
 			path = "Macs-Countdown";
+			sourceTree = "<group>";
+		};
+		FFCAB7E022D445FF00BBE43D /* Localisation */ = {
+			isa = PBXGroup;
+			children = (
+				FFCAB7E122D4461600BBE43D /* strings.swift */,
+				FFCAB7E322D44A9400BBE43D /* English.swift */,
+				FFCAB7E522D44B9D00BBE43D /* ZH-TW.swift */,
+			);
+			path = Localisation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +155,9 @@
 			files = (
 				FFB1EEA822D39F4F00A00E0F /* AppDelegate.swift in Sources */,
 				FFB1EEB922D3A7C600A00E0F /* configuration.swift in Sources */,
+				FFCAB7E422D44A9400BBE43D /* English.swift in Sources */,
+				FFCAB7E222D4461600BBE43D /* strings.swift in Sources */,
+				FFCAB7E622D44B9D00BBE43D /* ZH-TW.swift in Sources */,
 				FFB1EEAB22D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
