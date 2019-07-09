@@ -49,10 +49,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         constructMenu()
         
         // Setup a timer to keep it updated
-        _ = Timer.scheduledTimer(
+        let counting = Timer.scheduledTimer(
             timeInterval: 0.5, target: self, selector: #selector(self.update),
             userInfo: nil, repeats: true
         )
+        RunLoop.main.add(counting, forMode: .common) // To avoid loop being blocked by menu bar clicks
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
