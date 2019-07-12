@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FFB1EEA422D39F4F00A00E0F /* Macs Countdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Macs Countdown.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFB1EEA422D39F4F00A00E0F /* Macs Ager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Macs Ager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB1EEA722D39F4F00A00E0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFB1EEAA22D39F4F00A00E0F /* Macs_Countdown.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Macs_Countdown.xcdatamodel; sourceTree = "<group>"; };
 		FFB1EEAC22D39F5000A00E0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -26,6 +26,8 @@
 		FFB1EEB122D39F5000A00E0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFB1EEB222D39F5000A00E0F /* Macs_Countdown.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macs_Countdown.entitlements; sourceTree = "<group>"; };
 		FFB1EEB822D3A7C600A00E0F /* configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = configuration.swift; sourceTree = "<group>"; };
+		FFBDBA6023A2B73000AC1B1A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		FFBDBA6223A2B73500AC1B1A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFCAB7E122D4461600BBE43D /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
 		FFCAB7E322D44A9400BBE43D /* English.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = English.swift; sourceTree = "<group>"; };
 		FFCAB7E522D44B9D00BBE43D /* ZH-TW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ZH-TW.swift"; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		FFB1EE9B22D39F4F00A00E0F = {
 			isa = PBXGroup;
 			children = (
+				FFBDBA6223A2B73500AC1B1A /* README.md */,
+				FFBDBA6023A2B73000AC1B1A /* LICENSE */,
 				FFB1EEA622D39F4F00A00E0F /* Macs-Countdown */,
 				FFB1EEA522D39F4F00A00E0F /* Products */,
 			);
@@ -53,7 +57,7 @@
 		FFB1EEA522D39F4F00A00E0F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FFB1EEA422D39F4F00A00E0F /* Macs Countdown.app */,
+				FFB1EEA422D39F4F00A00E0F /* Macs Ager.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,14 +65,14 @@
 		FFB1EEA622D39F4F00A00E0F /* Macs-Countdown */ = {
 			isa = PBXGroup;
 			children = (
-				FFCAB7E022D445FF00BBE43D /* Localisation */,
+				FFB1EEB822D3A7C600A00E0F /* configuration.swift */,
 				FFB1EEA722D39F4F00A00E0F /* AppDelegate.swift */,
 				FFB1EEAC22D39F5000A00E0F /* Assets.xcassets */,
 				FFB1EEAE22D39F5000A00E0F /* Main.storyboard */,
 				FFB1EEB122D39F5000A00E0F /* Info.plist */,
 				FFB1EEB222D39F5000A00E0F /* Macs_Countdown.entitlements */,
 				FFB1EEA922D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld */,
-				FFB1EEB822D3A7C600A00E0F /* configuration.swift */,
+				FFCAB7E022D445FF00BBE43D /* Localisation */,
 			);
 			path = "Macs-Countdown";
 			sourceTree = "<group>";
@@ -86,9 +90,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FFB1EEA322D39F4F00A00E0F /* Macs Countdown */ = {
+		FFB1EEA322D39F4F00A00E0F /* Macs Ager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FFB1EEB522D39F5000A00E0F /* Build configuration list for PBXNativeTarget "Macs Countdown" */;
+			buildConfigurationList = FFB1EEB522D39F5000A00E0F /* Build configuration list for PBXNativeTarget "Macs Ager" */;
 			buildPhases = (
 				FFB1EEA022D39F4F00A00E0F /* Sources */,
 				FFB1EEA122D39F4F00A00E0F /* Frameworks */,
@@ -98,9 +102,9 @@
 			);
 			dependencies = (
 			);
-			name = "Macs Countdown";
+			name = "Macs Ager";
 			productName = "Macs-Countdown";
-			productReference = FFB1EEA422D39F4F00A00E0F /* Macs Countdown.app */;
+			productReference = FFB1EEA422D39F4F00A00E0F /* Macs Ager.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -118,7 +122,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FFB1EE9F22D39F4F00A00E0F /* Build configuration list for PBXProject "Macs Countdown" */;
+			buildConfigurationList = FFB1EE9F22D39F4F00A00E0F /* Build configuration list for PBXProject "Macs Ager" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -131,7 +135,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FFB1EEA322D39F4F00A00E0F /* Macs Countdown */,
+				FFB1EEA322D39F4F00A00E0F /* Macs Ager */,
 			);
 		};
 /* End PBXProject section */
@@ -226,7 +230,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -280,7 +284,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -294,6 +298,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Macs-Countdown/Macs_Countdown.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 71040;
@@ -308,6 +313,7 @@
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "LW.Macs-Countdown";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -317,6 +323,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Macs-Countdown/Macs_Countdown.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 71040;
@@ -331,6 +338,7 @@
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "LW.Macs-Countdown";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -338,7 +346,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FFB1EE9F22D39F4F00A00E0F /* Build configuration list for PBXProject "Macs Countdown" */ = {
+		FFB1EE9F22D39F4F00A00E0F /* Build configuration list for PBXProject "Macs Ager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FFB1EEB322D39F5000A00E0F /* Debug */,
@@ -347,7 +355,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FFB1EEB522D39F5000A00E0F /* Build configuration list for PBXNativeTarget "Macs Countdown" */ = {
+		FFB1EEB522D39F5000A00E0F /* Build configuration list for PBXNativeTarget "Macs Ager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FFB1EEB622D39F5000A00E0F /* Debug */,

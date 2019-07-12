@@ -1,6 +1,6 @@
 //
 //  configuration.swift
-//  Macs-Countdown
+//  Macs Ager
 //
 //  Created by Loyi on 2019/7/9.
 //  Copyright © 2019 Loyiworks. All rights reserved.
@@ -14,4 +14,4 @@ let deviceName         = "<#HOW DO WE CALL YOUR DEVICE#>"      // Preferred name
 let timeAppearDefaults = true                       // Whether to show days in menu bar
 let expect             = 365 * 4                    // Expected device life in days
 
-let currentLanguage = "English"                     // Available language: English, 中文
+let currentLanguage    = "English"                  // Available language: English, 中文

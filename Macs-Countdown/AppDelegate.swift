@@ -1,12 +1,13 @@
 //
 //  AppDelegate.swift
-//  Macs-Countdown
+//  Macs Ager
 //
 //  Created by Loyi on 2019/7/8.
 //  Copyright © 2019 Loyiworks. All rights reserved.
 //
 
 import Cocoa
+import IOKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

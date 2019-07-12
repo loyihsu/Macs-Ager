@@ -1,6 +1,6 @@
 //
 //  English.swift
-//  Macs Countdown
+//  Macs Ager
 //
 //  Created by Loyi on 2019/7/9.
 //  Copyright © 2019 Loyiworks. All rights reserved.
