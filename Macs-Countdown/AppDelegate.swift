@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     //MARK: - Initialize
     var setupWindow = NSWindow()
     var setupWindowAppeared = false
+    var menuStatus = false
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
@@ -25,25 +26,27 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     // Flags
     var titleAppear = timeAppearDefaults
     
-    
-    // Some other configurable parts (tags) are in the `configuration.swift` file
-    
     // MARK: - Dafaults
     
     func getUserSettings() {
         if let date = UserDefaults.standard.object(forKey: "userSetDate") as? Date,
-            let name = UserDefaults.standard.object(forKey: "userSetName") as? String{
+            let name = UserDefaults.standard.object(forKey: "userSetName") as? String {
+            
+            let expected = UserDefaults.standard.integer(forKey: "userSetExpect")
+            
             targetDay = date
-            deviceName = name
+            setupDeviceName = name
+            expect = expected
             setupDone = true
         }
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
         getUserSettings()
         
-        statusItem.button?.title = ""
+        statusItem.title = ""
         
         // Setup the status bar image
         if let button = statusItem.button {
@@ -75,13 +78,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     /// Construct the menu bar on click menu
     func constructMenu() {
+        menuStatus = true
         var menu = NSMenu()
         
         let quitItem = menuItemSetup(quitLOCA[languagePos], #selector(NSApplication.terminate(_:)), "", nil)
         
-        let years    = menuItemSetup(deviceName, nil, "", 50)
+        let years    = menuItemSetup(setupDeviceName, nil, "", 50)
         let equi     = menuItemSetup(itEqLOCA[languagePos], nil, "", 60)
         let dop      = menuItemSetup(dopLOCA[languagePos], nil, "", nil);
+        let reset    = menuItemSetup("Reset", #selector(self.reset), "", nil)
+        
         let hid      = menuItemSetup(noNumLOCA[languagePos], #selector(self.hideDays), "", 10)
         
         let appName  = menuItemSetup("\(name) by Loyiworks", nil, "", nil)
@@ -90,7 +96,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         addSeveralMenuItemToMenu(&menu, [quitItem, .separator(),
                                          appName, vers, .separator(),
                                          years, equi, .separator(),
-                                         dop, .separator(),
+                                         dop, reset, .separator(),
                                          hid])
         
         self.statusItem.menu = menu
@@ -106,6 +112,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         addSeveralMenuItemToMenu(&menu, [quitItem, .separator(), setupItem])
         
         self.statusItem.menu = menu
+    }
+    
+    @objc func reset() {
+        setupDone = false
+        callSetup()
     }
     
     @objc func callSetup() {
@@ -135,16 +146,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     /// Switch the hide days option on and off
     @objc func hideDays() {
-        titleAppear = (statusItem.menu?.item(withTag: 10)?.state == .on) ? true : false
-        statusItem.menu?.item(withTag: 10)?.state = (titleAppear == true) ? .off : .on
+        titleAppear = statusItem.menu?.item(withTag: 10)?.state == .on ? true : false
+        statusItem.menu?.item(withTag: 10)?.state = titleAppear ? .off : .on
     }
     
     /// Update on each cycle
     @objc func update() {
         if setupDone {
+            if menuStatus == false { constructMenu() }
+            
             let time = (targetDay.timeIntervalSinceNow/86400).abs()
             
-            statusItem.button?.title = titleAppear == true ? " \(String(Int(time)))" : ""
+            statusItem.title = titleAppear == true ? " \(String(Int(time)))" : ""
             
             let percentage = (Double(Int(time))/expectedDays) * 100
             
@@ -160,7 +173,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             var day_str   = (leftdays == 1) ? oneDayLOCA[languagePos]    : (leftdays >= 2) ? "\(Int(leftdays))\(severalDaysLOCA[languagePos])"  : brandNewLOCA[languagePos]
             if !(month_str == "" && year_str == "") { day_str = "\(andLOCA[languagePos])\(day_str)" }
             
-            setItemTitleAt(tag: 50, title: "\(deviceName): \(String(Int(time))) (\(percentage.format(f: ".2"))%)")
+            setItemTitleAt(tag: 50, title: "\(setupDeviceName): \(String(Int(time))) (\(percentage.format(f: ".2"))%)")
             setItemTitleAt(tag: 60, title: "\(itsLOCA[languagePos])\(year_str)\(month_str)\(day_str)")
         }
     }
@@ -194,7 +207,7 @@ extension Double {
     }
     
     func abs() -> Double {
-        return (self < 0) ? self * -1 : self
+        return self < 0 ? self * -1 : self
     }
 }
 
