@@ -21,7 +21,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     // Tags
     let expectedDays = Double(expect)
-    var languagePos  = languageIndex.firstIndex(of: currentLanguage)!
     
     // Flags
     var titleAppear = timeAppearDefaults
@@ -81,20 +80,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         menuStatus = true
         var menu = NSMenu()
         
-        let quitItem = menuItemSetup(quitLOCA[languagePos], #selector(NSApplication.terminate(_:)), "", nil)
+        let quitItem = menuItemSetup("\(quitLOCA) \(appName)", #selector(NSApplication.terminate(_:)), "", nil)
         
-        let years    = menuItemSetup(setupDeviceName, nil, "", 50)
-        let equi     = menuItemSetup(itEqLOCA[languagePos], nil, "", 60)
-        let dop      = menuItemSetup(dopLOCA[languagePos], nil, "", nil);
-        let reset    = menuItemSetup("Reset", #selector(self.reset), "", nil)
+        let years = menuItemSetup(setupDeviceName, nil, "", 50)
+        let equi = menuItemSetup(itEqLOCA, nil, "", 60)
+        let dop = menuItemSetup("\(dopLOCA): \(dateFormatterForDSGNT())", nil, "", 888);
+        let reset = menuItemSetup(resetLOCA, #selector(self.reset), "", nil)
         
-        let hid      = menuItemSetup(noNumLOCA[languagePos], #selector(self.hideDays), "", 10)
+        let hid = menuItemSetup(noNumLOCA, #selector(self.hideDays), "", 10)
         
-        let appName  = menuItemSetup("\(name) by Loyiworks", nil, "", nil)
-        let vers     = menuItemSetup("\(versions())", nil, "", nil)
+        let names  = menuItemSetup("\(appName) by Loyiworks", nil, "", nil)
+        let vers = menuItemSetup("\(versions())", nil, "", nil)
         
         addSeveralMenuItemToMenu(&menu, [quitItem, .separator(),
-                                         appName, vers, .separator(),
+                                         names, vers, .separator(),
                                          years, equi, .separator(),
                                          dop, reset, .separator(),
                                          hid])
@@ -106,8 +105,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     func constructInitialiser() {
         var menu = NSMenu()
         
-        let quitItem = menuItemSetup(quitLOCA[languagePos], #selector(NSApplication.terminate(_:)), "", nil)
-        let setupItem = menuItemSetup(setupLOCA[languagePos], #selector(callSetup), "", nil)
+        let quitItem = menuItemSetup("\(quitLOCA) \(appName)", #selector(NSApplication.terminate(_:)), "", nil)
+        let setupItem = menuItemSetup(setupLOCA, #selector(callSetup), "", nil)
         
         addSeveralMenuItemToMenu(&menu, [quitItem, .separator(), setupItem])
         
@@ -116,31 +115,30 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     @objc func reset() {
         setupDone = false
+        setItemTitleAt(tag: 888, title: "\(dopLOCA): \(dateFormatterForDSGNT())")
         callSetup()
     }
     
     @objc func callSetup() {
-        DispatchQueue.main.async {
-            if self.setupWindowAppeared == true {
-                self.setupWindow.makeKeyAndOrderFront(nil)
-            } else {
-                let setupView = SetupView()
-                
-                self.setupWindow = NSWindow(
-                    contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-                    styleMask: [.titled, .closable, .fullSizeContentView],
-                    backing: .buffered, defer: false)
-                
-                self.setupWindow.titlebarAppearsTransparent = true
-                
-                self.setupWindow.center()
-                self.setupWindow.setFrameAutosaveName("Setup Window")
-                self.setupWindow.contentView = NSHostingView(rootView: setupView)
-                self.setupWindow.makeKeyAndOrderFront(nil)
-                
-                self.setupWindow.delegate = self
-                self.setupWindowAppeared = true
-            }
+        if self.setupWindowAppeared == true {
+            self.setupWindow.makeKeyAndOrderFront(nil)
+        } else {
+            let setupView = SetupView()
+            
+            self.setupWindow = NSWindow(
+                contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
+                styleMask: [.titled, .closable, .fullSizeContentView],
+                backing: .buffered, defer: false)
+            
+            self.setupWindow.titlebarAppearsTransparent = true
+            
+            self.setupWindow.center()
+            self.setupWindow.setFrameAutosaveName("Setup Window")
+            self.setupWindow.contentView = NSHostingView(rootView: setupView)
+            self.setupWindow.makeKeyAndOrderFront(nil)
+            
+            self.setupWindow.delegate = self
+            self.setupWindowAppeared = true
         }
     }
     
@@ -168,13 +166,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             let month: Int = Int(leftdays/30.44)
             leftdays       = Double(Int(leftdays) - Int(Double(month) * 30.44))
             
-            let year_str  = (year == 1)     ? oneYearLOCA[languagePos]  : (year >= 2)     ? "\(year)\(severalYearsLOCA[languagePos])"         : ""
-            let month_str = (month == 1)    ? oneMonthLOCA[languagePos] : (month >= 2)    ? "\(month)\(severalMonthsLOCA[languagePos])"       : ""
-            var day_str   = (leftdays == 1) ? oneDayLOCA[languagePos]    : (leftdays >= 2) ? "\(Int(leftdays))\(severalDaysLOCA[languagePos])"  : brandNewLOCA[languagePos]
-            if !(month_str == "" && year_str == "") { day_str = "\(andLOCA[languagePos])\(day_str)" }
+            let year_str  = year == 1 ? oneYearLOCA : year >= 2 ? "\(year)\(severalYearsLOCA)" : ""
+            let month_str = month == 1 ? oneMonthLOCA : month >= 2 ? "\(month)\(severalMonthsLOCA)" : ""
+            var day_str   = leftdays == 1 ? oneDayLOCA : leftdays >= 2 ? "\(Int(leftdays))\(severalDaysLOCA)" : brandNewLOCA
+            if !(month_str == "" && year_str == "") { day_str = "\(andLOCA)\(day_str)" }
             
             setItemTitleAt(tag: 50, title: "\(setupDeviceName): \(String(Int(time))) (\(percentage.format(f: ".2"))%)")
-            setItemTitleAt(tag: 60, title: "\(itsLOCA[languagePos])\(year_str)\(month_str)\(day_str)")
+            setItemTitleAt(tag: 60, title: "\(itsLOCA)\(year_str)\(month_str)\(day_str)")
         }
     }
     

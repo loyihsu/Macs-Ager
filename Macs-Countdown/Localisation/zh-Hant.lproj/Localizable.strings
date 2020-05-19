@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  Macs Ager
+
+  Created by Loyi Hsu on 2020/5/20.
+  Copyright © 2020 Loyiworks. All rights reserved.
+*/
+
+"QUIT" = "離開";
+"EQUAZ" = "這相當於⋯⋯";
+"DOP" = "購買日期：";
+"NONUM" = "隱藏數字";
+"SETUP" = "進行初始設定";
+"RESET" = "重新設定";
+
+"ONEYEAR" = "1年";
+"SEVERALYEARS" = "年";
+"ONEMONTH" = "1個月";
+"SEVERALMONTHS" = "個月";
+"ONEDAY" = "1天";
+"DAYS" = "天";
+
+"ITZ" = "這相當於";
+"BRAND" = "一台全新的 Mac！";
+"AND" = "又";

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF12703024744C5100F467A9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF12703224744C5100F467A9 /* Localizable.strings */; };
 		FFA0822B24742C21002514C3 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0822A24742C21002514C3 /* SetupView.swift */; };
 		FFB1EEA822D39F4F00A00E0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EEA722D39F4F00A00E0F /* AppDelegate.swift */; };
 		FFB1EEAB22D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EEA922D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld */; };
@@ -14,11 +15,11 @@
 		FFB1EEB022D39F5000A00E0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB1EEAE22D39F5000A00E0F /* Main.storyboard */; };
 		FFB1EEB922D3A7C600A00E0F /* configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EEB822D3A7C600A00E0F /* configuration.swift */; };
 		FFCAB7E222D4461600BBE43D /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCAB7E122D4461600BBE43D /* strings.swift */; };
-		FFCAB7E422D44A9400BBE43D /* English.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCAB7E322D44A9400BBE43D /* English.swift */; };
-		FFCAB7E622D44B9D00BBE43D /* ZH-TW.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCAB7E522D44B9D00BBE43D /* ZH-TW.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF12703124744C5100F467A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF12703324744C5200F467A9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FFA0822A24742C21002514C3 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		FFB1EEA422D39F4F00A00E0F /* Macs Ager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Macs Ager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB1EEA722D39F4F00A00E0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -31,8 +32,6 @@
 		FFBDBA6023A2B73000AC1B1A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		FFBDBA6223A2B73500AC1B1A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFCAB7E122D4461600BBE43D /* strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
-		FFCAB7E322D44A9400BBE43D /* English.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = English.swift; sourceTree = "<group>"; };
-		FFCAB7E522D44B9D00BBE43D /* ZH-TW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ZH-TW.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				FFCAB7E122D4461600BBE43D /* strings.swift */,
-				FFCAB7E322D44A9400BBE43D /* English.swift */,
-				FFCAB7E522D44B9D00BBE43D /* ZH-TW.swift */,
+				FF12703224744C5100F467A9 /* Localizable.strings */,
 			);
 			path = Localisation;
 			sourceTree = "<group>";
@@ -140,6 +138,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = FFB1EE9B22D39F4F00A00E0F;
 			productRefGroup = FFB1EEA522D39F4F00A00E0F /* Products */;
@@ -157,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFB1EEAD22D39F5000A00E0F /* Assets.xcassets in Resources */,
+				FF12703024744C5100F467A9 /* Localizable.strings in Resources */,
 				FFB1EEB022D39F5000A00E0F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,10 +170,8 @@
 			files = (
 				FFB1EEA822D39F4F00A00E0F /* AppDelegate.swift in Sources */,
 				FFB1EEB922D3A7C600A00E0F /* configuration.swift in Sources */,
-				FFCAB7E422D44A9400BBE43D /* English.swift in Sources */,
 				FFA0822B24742C21002514C3 /* SetupView.swift in Sources */,
 				FFCAB7E222D4461600BBE43D /* strings.swift in Sources */,
-				FFCAB7E622D44B9D00BBE43D /* ZH-TW.swift in Sources */,
 				FFB1EEAB22D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,6 +179,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		FF12703224744C5100F467A9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF12703124744C5100F467A9 /* en */,
+				FF12703324744C5200F467A9 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		FFB1EEAE22D39F5000A00E0F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -196,6 +203,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -256,6 +264,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

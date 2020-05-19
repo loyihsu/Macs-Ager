@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  Macs Ager
+
+  Created by Loyi Hsu on 2020/5/20.
+  Copyright © 2020 Loyiworks. All rights reserved.
+*/
+
+"QUIT" = "Quit";
+"EQUAZ" = "It equals...";
+"DOP" = "Date of Purchase: ";
+"NONUM" = "Hide Count Number";
+"SETUP" = "Setup";
+"RESET" = "Reset";
+
+"ONEYEAR" = "1 year ";
+"SEVERALYEARS" = " years ";
+"ONEMONTH" = "1 month ";
+"SEVERALMONTHS" = "months";
+"ONEDAY" = "1 day";
+"DAYS" = " days";
+
+"ITZ" = "It's ";
+"BRAND" = "brand new!";
+"AND" = "and ";
