@@ -10,7 +10,6 @@
 		FF12703024744C5100F467A9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF12703224744C5100F467A9 /* Localizable.strings */; };
 		FFA0822B24742C21002514C3 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0822A24742C21002514C3 /* SetupView.swift */; };
 		FFB1EEA822D39F4F00A00E0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EEA722D39F4F00A00E0F /* AppDelegate.swift */; };
-		FFB1EEAB22D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EEA922D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld */; };
 		FFB1EEAD22D39F5000A00E0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB1EEAC22D39F5000A00E0F /* Assets.xcassets */; };
 		FFB1EEB022D39F5000A00E0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB1EEAE22D39F5000A00E0F /* Main.storyboard */; };
 		FFB1EEB922D3A7C600A00E0F /* configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EEB822D3A7C600A00E0F /* configuration.swift */; };
@@ -23,11 +22,10 @@
 		FFA0822A24742C21002514C3 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		FFB1EEA422D39F4F00A00E0F /* Macs Ager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Macs Ager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB1EEA722D39F4F00A00E0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FFB1EEAA22D39F4F00A00E0F /* Macs_Countdown.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Macs_Countdown.xcdatamodel; sourceTree = "<group>"; };
 		FFB1EEAC22D39F5000A00E0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFB1EEAF22D39F5000A00E0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFB1EEB122D39F5000A00E0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FFB1EEB222D39F5000A00E0F /* Macs_Countdown.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macs_Countdown.entitlements; sourceTree = "<group>"; };
+		FFB1EEB222D39F5000A00E0F /* Macs_Ager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macs_Ager.entitlements; sourceTree = "<group>"; };
 		FFB1EEB822D3A7C600A00E0F /* configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = configuration.swift; sourceTree = "<group>"; };
 		FFBDBA6023A2B73000AC1B1A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		FFBDBA6223A2B73500AC1B1A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -58,7 +56,7 @@
 			children = (
 				FFBDBA6223A2B73500AC1B1A /* README.md */,
 				FFBDBA6023A2B73000AC1B1A /* LICENSE */,
-				FFB1EEA622D39F4F00A00E0F /* Macs-Countdown */,
+				FFB1EEA622D39F4F00A00E0F /* macs-ager */,
 				FFB1EEA522D39F4F00A00E0F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,7 +69,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FFB1EEA622D39F4F00A00E0F /* Macs-Countdown */ = {
+		FFB1EEA622D39F4F00A00E0F /* macs-ager */ = {
 			isa = PBXGroup;
 			children = (
 				FFA0822C24742C25002514C3 /* View */,
@@ -80,11 +78,10 @@
 				FFB1EEAC22D39F5000A00E0F /* Assets.xcassets */,
 				FFB1EEAE22D39F5000A00E0F /* Main.storyboard */,
 				FFB1EEB122D39F5000A00E0F /* Info.plist */,
-				FFB1EEB222D39F5000A00E0F /* Macs_Countdown.entitlements */,
-				FFB1EEA922D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld */,
+				FFB1EEB222D39F5000A00E0F /* Macs_Ager.entitlements */,
 				FFCAB7E022D445FF00BBE43D /* Localisation */,
 			);
-			path = "Macs-Countdown";
+			path = "macs-ager";
 			sourceTree = "<group>";
 		};
 		FFCAB7E022D445FF00BBE43D /* Localisation */ = {
@@ -172,7 +169,6 @@
 				FFB1EEB922D3A7C600A00E0F /* configuration.swift in Sources */,
 				FFA0822B24742C21002514C3 /* SetupView.swift in Sources */,
 				FFCAB7E222D4461600BBE43D /* strings.swift in Sources */,
-				FFB1EEAB22D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,14 +314,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Macs-Countdown/Macs_Countdown.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Macs-Ager/Macs_Ager.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 20051901;
 				DEVELOPMENT_TEAM = 2A59FUGCBE;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "Macs-Countdown/Info.plist";
+				INFOPLIST_FILE = "macs-ager/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -343,14 +339,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Macs-Countdown/Macs_Countdown.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Macs-Ager/Macs_Ager.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 20051901;
 				DEVELOPMENT_TEAM = 2A59FUGCBE;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "Macs-Countdown/Info.plist";
+				INFOPLIST_FILE = "macs-ager/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -386,19 +382,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		FFB1EEA922D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FFB1EEAA22D39F4F00A00E0F /* Macs_Countdown.xcdatamodel */,
-			);
-			currentVersion = FFB1EEAA22D39F4F00A00E0F /* Macs_Countdown.xcdatamodel */;
-			path = Macs_Countdown.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = FFB1EE9C22D39F4F00A00E0F /* Project object */;
 }

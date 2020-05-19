@@ -9,9 +9,9 @@
 import Foundation
 
 var timezoneGMT: String { TimeZone.current.abbreviation() ?? "GMT+0"}
-let timeAppearDefaults = true                       // Whether to show days in menu bar
-var expect = 365 * 4                    // Expected device life in days
-var setupDeviceName = "Mac"                      // Preferred name of your device
+let timeAppearDefaults = true       // Whether to show days in menu bar
+var expect = 365 * 4                // Expected device life in days
+var setupDeviceName = "Mac"         // Preferred name of your device
 var targetDay = Date()
 
 var setupDone = false

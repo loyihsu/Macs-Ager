@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+#warning("Not yet localised.")
+
 struct SetupView: View {
     @State var deviceName: String = "Mac"
     @State var time = Date()
