@@ -115,7 +115,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     @objc func reset() {
         setupDone = false
-        setItemTitleAt(tag: 888, title: "\(dopLOCA): \(dateFormatterForDSGNT())")
         callSetup()
     }
     
@@ -173,6 +172,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             
             setItemTitleAt(tag: 50, title: "\(setupDeviceName): \(String(Int(time))) (\(percentage.format(f: ".2"))%)")
             setItemTitleAt(tag: 60, title: "\(itsLOCA)\(year_str)\(month_str)\(day_str)")
+            setItemTitleAt(tag: 888, title: "\(dopLOCA): \(dateFormatterForDSGNT())")
         }
     }
     

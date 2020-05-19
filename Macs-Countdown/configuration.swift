@@ -14,4 +14,4 @@ var expect = 365 * 4                    // Expected device life in days
 var setupDeviceName = "Mac"                      // Preferred name of your device
 var targetDay = Date()
 
-var setupDone          = false
+var setupDone = false

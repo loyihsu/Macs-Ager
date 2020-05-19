@@ -49,7 +49,7 @@ struct SetupView: View {
                 UserDefaults.standard.set(expect, forKey: "userSetExpect")
                 for window in NSApp.windows {
                     if let view = window.contentView as? NSHostingView<SetupView> {
-                        view.window?.close()
+                        view.window?.orderOut(self)
                     }
                 }
                 
