@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FFA0822B24742C21002514C3 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0822A24742C21002514C3 /* SetupView.swift */; };
 		FFB1EEA822D39F4F00A00E0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EEA722D39F4F00A00E0F /* AppDelegate.swift */; };
 		FFB1EEAB22D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EEA922D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld */; };
 		FFB1EEAD22D39F5000A00E0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB1EEAC22D39F5000A00E0F /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FFA0822A24742C21002514C3 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		FFB1EEA422D39F4F00A00E0F /* Macs Ager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Macs Ager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB1EEA722D39F4F00A00E0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFB1EEAA22D39F4F00A00E0F /* Macs_Countdown.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Macs_Countdown.xcdatamodel; sourceTree = "<group>"; };
@@ -44,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FFA0822C24742C25002514C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFA0822A24742C21002514C3 /* SetupView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FFB1EE9B22D39F4F00A00E0F = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +75,7 @@
 		FFB1EEA622D39F4F00A00E0F /* Macs-Countdown */ = {
 			isa = PBXGroup;
 			children = (
+				FFA0822C24742C25002514C3 /* View */,
 				FFB1EEB822D3A7C600A00E0F /* configuration.swift */,
 				FFB1EEA722D39F4F00A00E0F /* AppDelegate.swift */,
 				FFB1EEAC22D39F5000A00E0F /* Assets.xcassets */,
@@ -160,6 +171,7 @@
 				FFB1EEA822D39F4F00A00E0F /* AppDelegate.swift in Sources */,
 				FFB1EEB922D3A7C600A00E0F /* configuration.swift in Sources */,
 				FFCAB7E422D44A9400BBE43D /* English.swift in Sources */,
+				FFA0822B24742C21002514C3 /* SetupView.swift in Sources */,
 				FFCAB7E222D4461600BBE43D /* strings.swift in Sources */,
 				FFCAB7E622D44B9D00BBE43D /* ZH-TW.swift in Sources */,
 				FFB1EEAB22D39F4F00A00E0F /* Macs_Countdown.xcdatamodeld in Sources */,
@@ -230,7 +242,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -284,7 +296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -301,7 +313,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 71040;
+				CURRENT_PROJECT_VERSION = 20051901;
 				DEVELOPMENT_TEAM = 2A59FUGCBE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Macs-Countdown/Info.plist";
@@ -309,8 +321,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "LW.Macs-Countdown";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -326,7 +338,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 71040;
+				CURRENT_PROJECT_VERSION = 20051901;
 				DEVELOPMENT_TEAM = 2A59FUGCBE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Macs-Countdown/Info.plist";
@@ -334,8 +346,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "LW.Macs-Countdown";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

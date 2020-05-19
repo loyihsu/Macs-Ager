@@ -7,20 +7,16 @@
 //
 
 import Cocoa
-import IOKit
-
-struct UserSettings {
-    var day: [Int]
-    var name: String
-}
+import SwiftUI
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     //MARK: - Initialize
-    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    var setupWindow = NSWindow()
+    var setupWindowAppeared = false
     
-    var setupDone = false
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     // Tags
     let expectedDays = Double(expect)
@@ -28,37 +24,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // Flags
     var titleAppear = timeAppearDefaults
-    var targetDay: Date?
+    
     
     // Some other configurable parts (tags) are in the `configuration.swift` file
     
     // MARK: - Dafaults
     
     func getUserSettings() {
-        if let obj = UserDefaults.standard.object(forKey: "usersetups") as? UserSettings {
-            dsgntDay = obj.day
-            deviceName = obj.name
+        if let date = UserDefaults.standard.object(forKey: "userSetDate") as? Date,
+            let name = UserDefaults.standard.object(forKey: "userSetName") as? String{
+            targetDay = date
+            deviceName = name
             setupDone = true
         }
     }
     
-    func setTargetDay() {
-        let dateComponents = DateComponents.init(
-            calendar: nil, timeZone: TimeZone.init(abbreviation: timezoneGMT), era: nil,
-            year: dsgntDay[0], month: dsgntDay[1], day: dsgntDay[2], hour: dsgntDay[3], minute: dsgntDay[4], second: dsgntDay[5],
-            nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil,
-            weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil
-        )
-        
-        targetDay = Calendar.current.date(from: dateComponents)
-    }
-    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        
         getUserSettings()
         
-        statusItem.title = ""
+        statusItem.button?.title = ""
         
         // Setup the status bar image
         if let button = statusItem.button {
@@ -68,7 +53,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if setupDone == true {
             // Create date from components
-            setTargetDay()
             constructMenu()
         } else {
             constructInitialiser()
@@ -117,20 +101,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var menu = NSMenu()
         
         let quitItem = menuItemSetup(quitLOCA[languagePos], #selector(NSApplication.terminate(_:)), "", nil)
-        let setupItem = menuItemSetup(setupLOCA[languagePos], #selector(callSetupController), "", nil)
+        let setupItem = menuItemSetup(setupLOCA[languagePos], #selector(callSetup), "", nil)
         
         addSeveralMenuItemToMenu(&menu, [quitItem, .separator(), setupItem])
         
         self.statusItem.menu = menu
     }
     
-    @objc func callSetupController() {
-        // Perform setup here
-        
-        setTargetDay()
-        self.statusItem.menu = nil
-        setupDone = true
-        constructMenu()
+    @objc func callSetup() {
+        DispatchQueue.main.async {
+            if self.setupWindowAppeared == true {
+                self.setupWindow.makeKeyAndOrderFront(nil)
+            } else {
+                let setupView = SetupView()
+                
+                self.setupWindow = NSWindow(
+                    contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
+                    styleMask: [.titled, .closable, .fullSizeContentView],
+                    backing: .buffered, defer: false)
+                
+                self.setupWindow.titlebarAppearsTransparent = true
+                
+                self.setupWindow.center()
+                self.setupWindow.setFrameAutosaveName("Setup Window")
+                self.setupWindow.contentView = NSHostingView(rootView: setupView)
+                self.setupWindow.makeKeyAndOrderFront(nil)
+                
+                self.setupWindow.delegate = self
+                self.setupWindowAppeared = true
+            }
+        }
     }
     
     /// Switch the hide days option on and off
@@ -142,9 +142,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// Update on each cycle
     @objc func update() {
         if setupDone {
-            let time = ((targetDay?.timeIntervalSinceNow)!/86400).abs()
+            let time = (targetDay.timeIntervalSinceNow/86400).abs()
             
-            statusItem.title = (titleAppear == true) ? " \(String(Int(time)))" : ""
+            statusItem.button?.title = titleAppear == true ? " \(String(Int(time)))" : ""
             
             let percentage = (Double(Int(time))/expectedDays) * 100
             
@@ -182,6 +182,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let t = tag { output.tag = t }
         return output
     }
+    
+    func windowWillClose(_ notification: Notification) {
+        setupWindowAppeared = false
+    }
 }
 
 extension Double {
@@ -195,10 +199,10 @@ extension Double {
 }
 
 func dateFormatterForDSGNT() -> String {
-    let year   = "\(dsgntDay[0])"
-    let month  = (dsgntDay[1] < 10) ? "0\(dsgntDay[1])" : "\(dsgntDay[1])"
-    let day    = (dsgntDay[2] < 10) ? "0\(dsgntDay[2])" : "\(dsgntDay[2])"
-    return "\(year)-\(month)-\(day)"
+    let formatter = DateFormatter.init()
+    formatter.dateFormat = "yyyy-MM-dd"
+    
+    return formatter.string(from: targetDay)
 }
 
 func versions() -> String {
