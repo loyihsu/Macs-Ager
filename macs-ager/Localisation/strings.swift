@@ -23,7 +23,7 @@ let severalYearsLOCA  = NSLocalizedString("SEVERALYEARS", comment: "String for s
 let oneMonthLOCA = NSLocalizedString("ONEMONTH", comment: "String for one month.")
 let severalMonthsLOCA = NSLocalizedString("SEVERALMONTHS", comment: "String for several months.")
 let oneDayLOCA = NSLocalizedString("ONEDAY", comment: "String for one day.")
-let severalDaysLOCA = NSLocalizedString("SEVERALDAYS", comment: "String for several days.")
+let severalDaysLOCA = NSLocalizedString("DAYS", comment: "String for several days.")
 
 let itsLOCA = NSLocalizedString("ITZ", comment: "String for It's ...")
 let brandNewLOCA = NSLocalizedString("BRAND", comment: "String for brand new device.")

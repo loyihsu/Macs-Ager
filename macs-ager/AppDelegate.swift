@@ -84,7 +84,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         
         let years = menuItemSetup(setupDeviceName, nil, "", 50)
         let equi = menuItemSetup(itEqLOCA, nil, "", 60)
-        let dop = menuItemSetup("\(dopLOCA): \(dateFormatterForDSGNT())", nil, "", 888);
+        let dop = menuItemSetup("\(dopLOCA) \(dateFormatterForDSGNT())", nil, "", 888);
         let reset = menuItemSetup(resetLOCA, #selector(self.reset), "", nil)
         
         let hid = menuItemSetup(noNumLOCA, #selector(self.hideDays), "", 10)
@@ -160,19 +160,24 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             
             var leftdays = time
             
-            let year:  Int = Int(leftdays / 365.25)
-            leftdays       = Double(Int(leftdays) - Int(Double(year) * 365.25))
-            let month: Int = Int(leftdays/30.44)
-            leftdays       = Double(Int(leftdays) - Int(Double(month) * 30.44))
+            let year = Int(leftdays / 365.25)
+            leftdays = Double(Int(leftdays) - Int(Double(year) * 365.25))
+            let month = Int(leftdays/30.44)
+            leftdays = Double(Int(leftdays) - Int(Double(month) * 30.44))
             
-            let year_str  = year == 1 ? oneYearLOCA : year >= 2 ? "\(year)\(severalYearsLOCA)" : ""
+            let year_str = year == 1 ? oneYearLOCA : year >= 2 ? "\(year)\(severalYearsLOCA)" : ""
             let month_str = month == 1 ? oneMonthLOCA : month >= 2 ? "\(month)\(severalMonthsLOCA)" : ""
-            var day_str   = leftdays == 1 ? oneDayLOCA : leftdays >= 2 ? "\(Int(leftdays))\(severalDaysLOCA)" : brandNewLOCA
-            if !(month_str == "" && year_str == "") { day_str = "\(andLOCA)\(day_str)" }
+            var day_str = leftdays == 1 ? oneDayLOCA : leftdays >= 2 ? "\(Int(leftdays))\(severalDaysLOCA)" : brandNewLOCA
+            if month_str.isEmpty == false || year_str.isEmpty == false { day_str = "\(andLOCA)\(day_str)" }
             
-            setItemTitleAt(tag: 50, title: "\(setupDeviceName): \(String(Int(time))) (\(percentage.format(f: ".2"))%)")
-            setItemTitleAt(tag: 60, title: "\(itsLOCA)\(year_str)\(month_str)\(day_str)")
-            setItemTitleAt(tag: 888, title: "\(dopLOCA): \(dateFormatterForDSGNT())")
+            setItemTitleAt(tag: 50, title: "\(setupDeviceName): \(String(Int(time))) (\(percentage.format(f: ".2"))%)") // Update percentage
+            setItemTitleAt(tag: 60, title: "\(itsLOCA)\(year_str)\(month_str)\(day_str)")   // Update human readable y-m-d representation
+
+            if dopNeedsUpdate {
+                setItemTitleAt(tag: 888, title: "\(dopLOCA) \(dateFormatterForDSGNT())")    // Update Date of Purchase
+                dopNeedsUpdate = false
+            }
+
         }
     }
     

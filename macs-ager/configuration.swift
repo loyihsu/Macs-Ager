@@ -15,3 +15,4 @@ var setupDeviceName = "Mac"         // Preferred name of your device
 var targetDay = Date()
 
 var setupDone = false
+var dopNeedsUpdate = false

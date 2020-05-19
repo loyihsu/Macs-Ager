@@ -54,7 +54,8 @@ struct SetupView: View {
                         view.window?.orderOut(self)
                     }
                 }
-                
+
+                dopNeedsUpdate = true
                 setupDone = true
             }) {
                 Text("OK")
