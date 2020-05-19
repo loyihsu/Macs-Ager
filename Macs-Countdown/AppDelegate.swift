@@ -44,7 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func setTargetDay() {
         let dateComponents = DateComponents.init(
-            calendar: nil, timeZone: TimeZone.init(abbreviation: "GMT\(timezoneGMT)"), era: nil,
+            calendar: nil, timeZone: TimeZone.init(abbreviation: timezoneGMT), era: nil,
             year: dsgntDay[0], month: dsgntDay[1], day: dsgntDay[2], hour: dsgntDay[3], minute: dsgntDay[4], second: dsgntDay[5],
             nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil,
             weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil
