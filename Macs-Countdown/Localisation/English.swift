@@ -13,6 +13,7 @@ let QuitEn          = "Quit \(name)"
 let itEqEn          = "It equals..."
 let dopEn           = "Date of Purchase: \(dateFormatterForDSGNT())"
 let noNumEn         = "Hide Count Number"
+let setupEn         = "Setup for this app"
 
 let oneYearEn       = "1 year "
 let severalYearsEn  = " years "

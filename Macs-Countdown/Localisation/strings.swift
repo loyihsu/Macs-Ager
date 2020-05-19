@@ -15,6 +15,7 @@ let quitLOCA          = [QuitEn,  QuitZHTW]
 let itEqLOCA          = [itEqEn,  itEqZHTW]
 let dopLOCA           = [dopEn,   dopZHTW]
 let noNumLOCA         = [noNumEn, noNumZHTW]
+let setupLOCA         = [setupEn, setupZHTW]
 
 let oneYearLOCA       = [oneYearEn,       oneYearZHTW]
 let severalYearsLOCA  = [severalYearsEn,  severalYearsZHTW]

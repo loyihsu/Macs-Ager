@@ -9,11 +9,18 @@
 import Cocoa
 import IOKit
 
+struct UserSettings {
+    var day: [Int]
+    var name: String
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     //MARK: - Initialize
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    
+    var setupDone = false
     
     // Tags
     let expectedDays = Double(expect)
@@ -27,8 +34,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: - Dafaults
     
+    func getUserSettings() {
+        if let obj = UserDefaults.standard.object(forKey: "usersetups") as? UserSettings {
+            dsgntDay = obj.day
+            deviceName = obj.name
+            setupDone = true
+        }
+    }
+    
+    func setTargetDay() {
+        let dateComponents = DateComponents.init(
+            calendar: nil, timeZone: TimeZone.init(abbreviation: "GMT\(timezoneGMT)"), era: nil,
+            year: dsgntDay[0], month: dsgntDay[1], day: dsgntDay[2], hour: dsgntDay[3], minute: dsgntDay[4], second: dsgntDay[5],
+            nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil,
+            weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil
+        )
+        
+        targetDay = Calendar.current.date(from: dateComponents)
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
+        getUserSettings()
         
         statusItem.title = ""
         
@@ -38,22 +66,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.image = statusbarImage
         }
         
-        // Create date from components
-        let dateComponents = DateComponents.init(
-            calendar: nil, timeZone: TimeZone.init(abbreviation: "GMT\(timezoneGMT)"), era: nil,
-            year: dsgntDay[0], month: dsgntDay[1], day: dsgntDay[2], hour: dsgntDay[3], minute: dsgntDay[4], second: dsgntDay[5],
-            nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil,
-            weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil
-        )
-        targetDay = Calendar.current.date(from: dateComponents)
-        
-        constructMenu()
+        if setupDone == true {
+            // Create date from components
+            setTargetDay()
+            constructMenu()
+        } else {
+            constructInitialiser()
+        }
         
         // Setup a timer to keep it updated
         let counting = Timer.scheduledTimer(
             timeInterval: 0.5, target: self, selector: #selector(self.update),
             userInfo: nil, repeats: true
         )
+        
         RunLoop.main.add(counting, forMode: .common) // To avoid loop being blocked by menu bar clicks
     }
     
@@ -68,6 +94,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var menu = NSMenu()
         
         let quitItem = menuItemSetup(quitLOCA[languagePos], #selector(NSApplication.terminate(_:)), "", nil)
+        
         let years    = menuItemSetup(deviceName, nil, "", 50)
         let equi     = menuItemSetup(itEqLOCA[languagePos], nil, "", 60)
         let dop      = menuItemSetup(dopLOCA[languagePos], nil, "", nil);
@@ -85,6 +112,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.statusItem.menu = menu
     }
     
+    /// Construct the setup menu for first time users.
+    func constructInitialiser() {
+        var menu = NSMenu()
+        
+        let quitItem = menuItemSetup(quitLOCA[languagePos], #selector(NSApplication.terminate(_:)), "", nil)
+        let setupItem = menuItemSetup(setupLOCA[languagePos], #selector(callSetupController), "", nil)
+        
+        addSeveralMenuItemToMenu(&menu, [quitItem, .separator(), setupItem])
+        
+        self.statusItem.menu = menu
+    }
+    
+    @objc func callSetupController() {
+        // Perform setup here
+        
+        setTargetDay()
+        self.statusItem.menu = nil
+        setupDone = true
+        constructMenu()
+    }
+    
     /// Switch the hide days option on and off
     @objc func hideDays() {
         titleAppear = (statusItem.menu?.item(withTag: 10)?.state == .on) ? true : false
@@ -93,26 +141,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     /// Update on each cycle
     @objc func update() {
-        let time = ((targetDay?.timeIntervalSinceNow)!/86400).abs()
-        
-        statusItem.title = (titleAppear == true) ? " \(String(Int(time)))" : ""
-        
-        let percentage = (Double(Int(time))/expectedDays) * 100
-        
-        var leftdays = time
-        
-        let year:  Int = Int(leftdays / 365.25)
-        leftdays       = Double(Int(leftdays) - Int(Double(year) * 365.25))
-        let month: Int = Int(leftdays/30.44)
-        leftdays       = Double(Int(leftdays) - Int(Double(month) * 30.44))
-        
-        let year_str  = (year == 1)     ? oneYearLOCA[languagePos]  : (year >= 2)     ? "\(year)\(severalYearsLOCA[languagePos])"         : ""
-        let month_str = (month == 1)    ? oneMonthLOCA[languagePos] : (month >= 2)    ? "\(month)\(severalMonthsLOCA[languagePos])"       : ""
-        var day_str   = (leftdays == 1) ? oneDayLOCA[languagePos]    : (leftdays >= 2) ? "\(Int(leftdays))\(severalDaysLOCA[languagePos])"  : brandNewLOCA[languagePos]
-        if !(month_str == "" && year_str == "") { day_str = "\(andLOCA[languagePos])\(day_str)" }
-        
-        setItemTitleAt(tag: 50, title: "\(deviceName): \(String(Int(time))) (\(percentage.format(f: ".2"))%)")
-        setItemTitleAt(tag: 60, title: "\(itsLOCA[languagePos])\(year_str)\(month_str)\(day_str)")
+        if setupDone {
+            let time = ((targetDay?.timeIntervalSinceNow)!/86400).abs()
+            
+            statusItem.title = (titleAppear == true) ? " \(String(Int(time)))" : ""
+            
+            let percentage = (Double(Int(time))/expectedDays) * 100
+            
+            var leftdays = time
+            
+            let year:  Int = Int(leftdays / 365.25)
+            leftdays       = Double(Int(leftdays) - Int(Double(year) * 365.25))
+            let month: Int = Int(leftdays/30.44)
+            leftdays       = Double(Int(leftdays) - Int(Double(month) * 30.44))
+            
+            let year_str  = (year == 1)     ? oneYearLOCA[languagePos]  : (year >= 2)     ? "\(year)\(severalYearsLOCA[languagePos])"         : ""
+            let month_str = (month == 1)    ? oneMonthLOCA[languagePos] : (month >= 2)    ? "\(month)\(severalMonthsLOCA[languagePos])"       : ""
+            var day_str   = (leftdays == 1) ? oneDayLOCA[languagePos]    : (leftdays >= 2) ? "\(Int(leftdays))\(severalDaysLOCA[languagePos])"  : brandNewLOCA[languagePos]
+            if !(month_str == "" && year_str == "") { day_str = "\(andLOCA[languagePos])\(day_str)" }
+            
+            setItemTitleAt(tag: 50, title: "\(deviceName): \(String(Int(time))) (\(percentage.format(f: ".2"))%)")
+            setItemTitleAt(tag: 60, title: "\(itsLOCA[languagePos])\(year_str)\(month_str)\(day_str)")
+        }
     }
     
     // MARK: - Make Life Easier

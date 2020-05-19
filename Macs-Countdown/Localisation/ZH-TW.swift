@@ -13,6 +13,7 @@ let QuitZHTW          = "結束 \(name)"
 let itEqZHTW          = "這相當於..."
 let dopZHTW           = "購買日期：\(dateFormatterForDSGNT())"
 let noNumZHTW         = "隱藏數字"
+let setupZHTW         = "進行初始設定"
 
 let oneYearZHTW       = "1年"
 let severalYearsZHTW  = "年"

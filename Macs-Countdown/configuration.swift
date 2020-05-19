@@ -8,10 +8,10 @@
 
 import Foundation
 
-let dsgntDay           = [<#YEAR#>, <#MONTH#>, <#DAY#>, <#HOUR#>, <#MINUTE#>, <#SECOND#>]     // Purchase date of your device
-let timezoneGMT        = "<#YOUR GMT TIME ZONE, LIKE +8#>"                // Your Timezone
-let deviceName         = "<#HOW DO WE CALL YOUR DEVICE#>"      // Preferred name of your device
+var timezoneGMT: String { TimeZone.current.abbreviation() ?? "GMT+0"}
 let timeAppearDefaults = true                       // Whether to show days in menu bar
 let expect             = 365 * 4                    // Expected device life in days
+var dsgntDay           = [2000, 1, 1, 0, 0, 0]      // Purchase date of your device
+var deviceName         = "Mac"                      // Preferred name of your device
 
 let currentLanguage    = "English"                  // Available language: English, 中文
