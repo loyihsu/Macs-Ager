@@ -23,3 +23,14 @@
 "ITZ" = "It's ";
 "BRAND" = "brand new!";
 "AND" = "and ";
+
+"ENTERINFO" = "Please enter the following information.";
+"DEVICENAME" = "Device Name:";
+"ENTERHERE" = "Enter your device name here.";
+"STARTCOUNTING" = "Start Counting From...";
+"EXPECTO" = "How long do you expect to use this Mac?";
+"PLUYR" = "years";
+"SIGYR" = "year";
+
+"OKAY" = "OK";
+"CANCEL" = "Cancel";

@@ -80,16 +80,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         menuStatus = true
         var menu = NSMenu()
         
-        let quitItem = menuItemSetup("\(quitLOCA) \(appName)", #selector(NSApplication.terminate(_:)), "", nil)
+        let quitItem = menuItemSetup("\(LOCA_quit) \(LOCA_appName)", #selector(NSApplication.terminate(_:)), "", nil)
         
         let years = menuItemSetup(setupDeviceName, nil, "", 50)
-        let equi = menuItemSetup(itEqLOCA, nil, "", 60)
-        let dop = menuItemSetup("\(dopLOCA) \(dateFormatterForDSGNT())", nil, "", 888);
-        let reset = menuItemSetup(resetLOCA, #selector(self.reset), "", nil)
+        let equi = menuItemSetup(LOCA_equaz, nil, "", 60)
+        let dop = menuItemSetup("\(LOCA_dateOfPurchase) \(dateFormatterForDSGNT())", nil, "", 888);
+        let reset = menuItemSetup(LOCA_reset, #selector(self.reset), "", nil)
         
-        let hid = menuItemSetup(noNumLOCA, #selector(self.hideDays), "", 10)
+        let hid = menuItemSetup(LOCA_hideNum, #selector(self.hideDays), "", 10)
         
-        let names  = menuItemSetup("\(appName) by Loyiworks", nil, "", nil)
+        let names  = menuItemSetup("\(LOCA_appName) by Loyiworks", nil, "", nil)
         let vers = menuItemSetup("\(versions())", nil, "", nil)
         
         addSeveralMenuItemToMenu(&menu, [quitItem, .separator(),
@@ -105,8 +105,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     func constructInitialiser() {
         var menu = NSMenu()
         
-        let quitItem = menuItemSetup("\(quitLOCA) \(appName)", #selector(NSApplication.terminate(_:)), "", nil)
-        let setupItem = menuItemSetup(setupLOCA, #selector(callSetup), "", nil)
+        let quitItem = menuItemSetup("\(LOCA_quit) \(LOCA_appName)", #selector(NSApplication.terminate(_:)), "", nil)
+        let setupItem = menuItemSetup(LOCA_setup, #selector(callSetup), "", nil)
         
         addSeveralMenuItemToMenu(&menu, [quitItem, .separator(), setupItem])
         
@@ -165,16 +165,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             let month = Int(leftdays/30.44)
             leftdays = Double(Int(leftdays) - Int(Double(month) * 30.44))
             
-            let year_str = year == 1 ? oneYearLOCA : year >= 2 ? "\(year)\(severalYearsLOCA)" : ""
-            let month_str = month == 1 ? oneMonthLOCA : month >= 2 ? "\(month)\(severalMonthsLOCA)" : ""
-            var day_str = leftdays == 1 ? oneDayLOCA : leftdays >= 2 ? "\(Int(leftdays))\(severalDaysLOCA)" : brandNewLOCA
-            if month_str.isEmpty == false || year_str.isEmpty == false { day_str = "\(andLOCA)\(day_str)" }
+            let year_str = year == 1 ? LOCA_year : year >= 2 ? "\(year)\(LOCA_years)" : ""
+            let month_str = month == 1 ? LOCA_month : month >= 2 ? "\(month)\(LOCA_months)" : ""
+            var day_str = leftdays == 1 ? LOCA_day : leftdays >= 2 ? "\(Int(leftdays))\(LOCA_days)" : LOCA_brandNew
+            if month_str.isEmpty == false || year_str.isEmpty == false { day_str = "\(LOCA_and)\(day_str)" }
             
             setItemTitleAt(tag: 50, title: "\(setupDeviceName): \(String(Int(time))) (\(percentage.format(f: ".2"))%)") // Update percentage
-            setItemTitleAt(tag: 60, title: "\(itsLOCA)\(year_str)\(month_str)\(day_str)")   // Update human readable y-m-d representation
+            setItemTitleAt(tag: 60, title: "\(LOCA_itz)\(year_str)\(month_str)\(day_str)")   // Update human readable y-m-d representation
 
             if dopNeedsUpdate {
-                setItemTitleAt(tag: 888, title: "\(dopLOCA) \(dateFormatterForDSGNT())")    // Update Date of Purchase
+                setItemTitleAt(tag: 888, title: "\(LOCA_dateOfPurchase) \(dateFormatterForDSGNT())")    // Update Date of Purchase
                 dopNeedsUpdate = false
             }
 

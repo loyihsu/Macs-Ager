@@ -23,3 +23,14 @@
 "ITZ" = "這相當於";
 "BRAND" = "一台全新的 Mac！";
 "AND" = "又";
+
+"ENTERINFO" = "請輸入以下的資訊。";
+"DEVICENAME" = "裝置的名字：";
+"ENTERHERE" = "請在這邊幫你的裝置取個名字。";
+"STARTCOUNTING" = "從這個日期開始⋯⋯";
+"EXPECTO" = "你預期使用這台 Mac 多久？";
+"PLUYR" = "年";
+"SIGYR" = "年";
+
+"OKAY" = "好";
+"CANCEL" = "取消";
