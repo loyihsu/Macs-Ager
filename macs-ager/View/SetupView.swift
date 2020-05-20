@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SetupView: View {
     @State var deviceName: String = "Mac"
-    @State var time = Date()
+    @State var time = targetDay
     @State var years: String = "4"
     
     func validateYears() -> Bool {
