@@ -45,12 +45,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         
         getUserSettings()
         
-        statusItem.title = ""
+        statusItem.button?.title = ""
         
         // Setup the status bar image
         if let button = statusItem.button {
             let statusbarImage = NSImage(named: NSImage.Name("StatusBarButtonImage"))
             button.image = statusbarImage
+            button.imagePosition = .imageLeft
         }
         
         if setupDone == true {
@@ -154,7 +155,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             
             let time = (targetDay.timeIntervalSinceNow/86400).abs()
             
-            statusItem.title = titleAppear == true ? " \(String(Int(time)))" : ""
+            statusItem.button?.title = titleAppear == true ? " \(String(Int(time)))" : ""
             
             let percentage = (Double(Int(time))/expectedDays) * 100
             
